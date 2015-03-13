@@ -1,0 +1,548 @@
+package reactiontest;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
+
+public class ReactionTest extends JPanel implements ActionListener {
+
+	
+	
+	Userball1 user = new Userball1(this);
+	Obstacle1 ball1 = new Obstacle1(this);
+	Obstacle2 ball2 = new Obstacle2(this);
+	Obstacle3 ball3 = new Obstacle3(this);
+	Obstacle4 ball4 = new Obstacle4(this);
+	
+	public ReactionTest() {
+	
+		addKeyListener(new KeyListener() {
+			public void keyTyped(KeyEvent e) {
+			}
+
+			public void keyReleased(KeyEvent e) {
+				user.keyReleased(e);
+			}
+
+			public void keyPressed(KeyEvent e) {
+				user.keyPressed(e);
+				
+			}
+			
+		});
+		
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+	}
+   
+	public void move1() {
+		ball1.move();
+		ball2.move();
+		ball3.move();
+		ball4.move();
+		user.move();
+	}
+	private void move2() {}
+	
+	private void move3() {}
+
+	private void move4() {}
+
+	private void move5() {}
+	
+	private void move6() {}
+
+	private void move7() {}
+
+	private void move8() {}
+
+	private void move9() {}
+
+	
+
+	public void paint(Graphics g) {
+		
+		super.paint(g);
+		Graphics g1 = getGraphics();
+		
+
+		ball1.paint(g);
+		ball2.paint(g);
+		ball3.paint(g);
+		ball4.paint(g);
+		user.paint(g);}
+		
+	public void gameOver() {
+		JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);
+		System.exit(ABORT);
+		//the Game Over message
+	}
+	
+	
+	public static void main(String[] args) throws InterruptedException, IOException  {
+		// Nikolay Tsoy, Haileybury College.
+		final JFrame Starting_menu = new JFrame ("Reaction Test");
+		//background
+		ImagePanel background = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background.setPreferredSize(new Dimension(552, 552));
+		
+		//buttons
+		JButton Start = new JButton ("Start");
+		JButton HighScores = new JButton ("High Scores");
+		JButton Help = new JButton ("Help");
+		JButton Exit = new JButton ("Exit");
+
+		//adding buttons on top of the background.
+		background.add(Start);
+		background.add(HighScores);
+		background.add(Help);
+		background.add(Exit);
+		
+       
+		//add the background
+		Starting_menu.add(background);
+		
+		//centering the background image
+		Starting_menu.setLocationRelativeTo(null);
+
+	    Starting_menu.setLocation(400, 70);
+		
+		//size of the JFrame
+		Starting_menu.setSize(552, 552);		
+		Starting_menu.setVisible(true);
+		Starting_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////
+	
+		//Level Selection JFrame
+		final JFrame LevelSelection = new JFrame ("Level Selection");
+		
+		//background
+		ImagePanel background1 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background1.setPreferredSize(new Dimension(552, 552));
+		
+		//buttons
+		JButton One = new JButton ("1");
+		JButton Two = new JButton ("2");
+		JButton Three = new JButton ("3");
+		JButton Four = new JButton ("4");
+		JButton Five = new JButton ("5");
+		JButton Six = new JButton ("6");
+		JButton Seven = new JButton ("7");
+		JButton Eight = new JButton ("8");
+		JButton Nine = new JButton ("9");
+		
+		
+		
+	
+	{}
+		//adding buttons on top of the background.
+		background1.add(One);
+		background1.add(Two);
+		background1.add(Three);
+		background1.add(Four);
+		background1.add(Five);
+		background1.add(Six);
+		background1.add(Seven);
+		background1.add(Eight);
+		background1.add(Nine);
+		
+		
+		
+		//add the background
+		LevelSelection.add(background1);
+	
+		//centering the background image
+		LevelSelection.setLocationRelativeTo(null);
+		
+		 
+	    LevelSelection.setLocation(400, 70);
+		
+		
+		//size of the JFrame
+		LevelSelection.setSize(552, 552);		
+		LevelSelection.setVisible(false);
+		LevelSelection.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+		//Help screen
+		final JFrame Help_screen = new JFrame ("Help menu");
+		//background
+		ImagePanel background2 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background2.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Help_screen.add(background2);
+	
+		//centering the background image
+		Help_screen.setLocationRelativeTo(null);
+		
+	    Help_screen.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Help_screen.setSize(552, 552);		
+		Help_screen.setVisible(false);
+		Help_screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//High Scores
+		final JFrame High_Scores = new JFrame ("High Scores");
+		//background
+		ImagePanel background3 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background3.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		High_Scores.add(background3);
+	
+		//centering the background image
+		High_Scores.setLocationRelativeTo(null);
+		
+	    High_Scores.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		High_Scores.setSize(552, 552);		
+		High_Scores.setVisible(false);
+		High_Scores.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 1
+		final JFrame Level1 = new JFrame ("Level 1");
+		//background
+		ImagePanel background4 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background4.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level1.add(background4);
+	
+		//centering the background image
+		Level1.setLocationRelativeTo(null);
+		
+		
+	    Level1.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level1.setSize(552, 552);		
+		Level1.setVisible(false);
+		Level1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+
+///////////////////////////////////////////
+		
+	
+		
+		
+		//Level 2
+		final JFrame Level2 = new JFrame ("Level 2");
+		//background
+		ImagePanel background5 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background5.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level2.add(background5);
+	
+		//centering the background image
+		Level2.setLocationRelativeTo(null);
+		
+	    Level2.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level2.setSize(552, 552);		
+		Level2.setVisible(false);
+		Level2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 3
+		final JFrame Level3 = new JFrame ("Level 3");
+		//background
+		ImagePanel background6 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background6.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level3.add(background6);
+	
+		//centering the background image
+		Level3.setLocationRelativeTo(null);
+		
+	    Level3.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level3.setSize(552, 552);		
+		Level3.setVisible(false);
+		Level3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 4
+		final JFrame Level4 = new JFrame ("Level 4");
+		//background
+		ImagePanel background7 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background7.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level4.add(background7);
+	
+		//centering the background image
+		Level4.setLocationRelativeTo(null);
+		
+	    Level4.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level4.setSize(552, 552);		
+		Level4.setVisible(false);
+		Level4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 5
+		final JFrame Level5 = new JFrame ("Level 5");
+		//background
+		ImagePanel background8 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background8.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level5.add(background8);
+	
+		//centering the background image
+		Level5.setLocationRelativeTo(null);
+		
+	    Level5.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level5.setSize(552, 552);		
+		Level5.setVisible(false);
+		Level5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 6
+		final JFrame Level6 = new JFrame ("Level 6");
+		//background
+		ImagePanel background9 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background9.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level6.add(background9);
+	
+		//centering the background image
+		Level6.setLocationRelativeTo(null);
+		
+	    Level6.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level6.setSize(552, 552);		
+		Level6.setVisible(false);
+		Level6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 7
+		final JFrame Level7 = new JFrame ("Level 7");
+		//background
+		ImagePanel background10 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background10.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level7.add(background10);
+	
+		//centering the background image
+		Level7.setLocationRelativeTo(null);
+		
+	    Level7.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level7.setSize(552, 552);		
+		Level7.setVisible(false);
+		Level7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 8
+		final JFrame Level8 = new JFrame ("Level 8");
+		//background
+		ImagePanel background11 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background11.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level8.add(background11);
+	
+		//centering the background image
+		Level8.setLocationRelativeTo(null);
+		
+	    Level8.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level8.setSize(552, 552);		
+		Level8.setVisible(false);
+		Level8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		//Level 9
+		final JFrame Level9 = new JFrame ("Level 9");
+		//background
+		ImagePanel background12 = new ImagePanel("D:/User/Desktop/Other/Cloud.jpg");
+		background12.setPreferredSize(new Dimension(552, 552));
+		
+		//add the background
+		Level9.add(background12);
+	
+		//centering the background image
+		Level9.setLocationRelativeTo(null);
+		
+	    Level9.setLocation(400, 70);
+
+		
+		//size of the JFrame
+		Level9.setSize(552, 552);		
+		Level9.setVisible(false);
+		Level9.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	
+	
+	
+	Start.addActionListener(new ActionListener(){
+	public void actionPerformed(ActionEvent arg0) {
+		// Action Listener
+		//button commands
+		Starting_menu.setVisible(false);
+		Starting_menu.dispose();
+		LevelSelection.setVisible(true);
+	}});
+
+
+	Exit.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+		System.exit(0);	
+		
+	}
+	});
+	
+	HighScores.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			Starting_menu.setVisible(false);
+			Starting_menu.dispose();
+			High_Scores.setVisible(true);
+	}
+	});
+	
+	Help.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			Starting_menu.setVisible(false);
+			Starting_menu.dispose();
+			Help_screen.setVisible(true);
+	}
+	});
+	One.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level1.setVisible(true);
+			
+		
+		
+			{			
+		
+				
+}}}
+	
+	
+	);
+	
+	Two.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level2.setVisible(true);
+	}
+	});
+	
+	Three.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level3.setVisible(true);
+	}
+	});
+	
+	Four.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level4.setVisible(true);
+	}
+	});
+	
+	Five.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level5.setVisible(true);
+	}
+	});
+	
+	Six.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level6.setVisible(true);
+	}
+	});
+	
+	Seven.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level7.setVisible(true);
+	}
+	});
+	
+	Eight.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level8.setVisible(true);
+	}
+	});
+	
+	Nine.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0){
+			LevelSelection.setVisible(false);
+			LevelSelection.dispose();
+			Level9.setVisible(true);
+	}
+	});}
+	
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	}
+
