@@ -1,0 +1,139 @@
+package project;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+
+
+
+public class Game extends JPanel implements ActionListener {
+	
+	public int secs=0;
+
+
+
+	Timer mainT;
+	User user;
+	
+	int Obstaclesnum = 5;
+	static int levelnumber  = 1;
+	
+
+	static ArrayList<Obstacles> obstacles = new ArrayList<Obstacles>();
+	Random rand  = new Random();
+	
+	public Game() {
+	
+		setFocusable(true);
+		user = new User(270,250);
+		addKeyListener(new Key(user));
+		mainT = new Timer (10,this);
+		mainT.start();
+		//"this"is going to call ActionPerformed method every 10 milliseconds.
+		
+		startgame();
+		
+		
+		for (int i=0;i<Obstaclesnum;i++){
+		addObstacles(new Obstacles(rand.nextInt(600),-rand.nextInt(600)));}
+	
+	}
+	
+	public void paint(Graphics g){
+		//paint method
+		
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+		ImageIcon ic= new ImageIcon ("C:/Users/Николай/workspace/A2 Project/src/project/Snow.jpg");
+		g2d.drawImage(ic.getImage(),0,0,null);
+		
+		
+		user.draw(g2d);
+		
+		
+		//for obstacles
+		for (int i=0;i<obstacles.size();i++){
+			Obstacles obst= obstacles.get(i);
+			obst.draw(g2d);
+			
+		}
+}
+	public void actionPerformed(ActionEvent arg0) {
+		// Action Listener
+	
+		secs++;
+		//starting the timer in the milliseconds
+	
+		user.update();
+		
+		for(int i=0; i <obstacles.size();i++){
+		Obstacles obst = obstacles.get(i);	
+		obst.update();
+		//obstacles
+		}		
+		nextlevel();
+		//the game is going to go to next level
+		repaint();
+		}
+	
+	
+	
+	public void addObstacles(Obstacles ob){
+		
+		obstacles.add(ob);
+		
+	}
+	
+	 public static ArrayList<Obstacles> getObstacles(){
+		 return obstacles;
+	 }
+
+
+	public static void gameOver() {
+		// The Game Over message that is going to be displayed
+		JOptionPane.showMessageDialog(null,"Unlucky. You have survived for: "+levelnumber+" levels");
+		System.exit(0);
+		//The game is going to exit, after showing how many levels the user has survived for.
+	}
+		
+
+	public void startgame () {
+		//Start game subroutine
+	
+		
+		Obstaclesnum= levelnumber *15;
+		//it is going to increase the number of obstacles with each level.
+	
+  
+		
+		for (int i=0;i<Obstaclesnum;i++){
+			addObstacles(new Obstacles(rand.nextInt(600),-10+-
+					rand.nextInt(600)));
+		}}
+        public void nextlevel(){
+        
+        	
+        	if(secs%1000==0){
+        		levelnumber++;
+        		obstacles.clear();
+        		JOptionPane.showMessageDialog(null,"Well done! Get ready for level: "+ levelnumber);
+        		startgame(); 
+        		//After ten seconds, the level is going to finish and the user is going to be directed to the new level.
+        	
+        }}}
+      
+    
+
+		
+	
