@@ -1,0 +1,117 @@
+package project;
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
+
+
+public class MainClass {
+
+	//Nikolay Tsoy
+	public static void main(String[] args)  {
+		// Reaction Test
+		final JFrame Starting_menu = new JFrame ("Reaction Test");
+		//background
+		ImagePanel background = new ImagePanel("C:/Users/Николай/workspace/A2 Project/src/project/Snow.jpg");
+		background.setPreferredSize(new Dimension(600, 600));
+		
+		//buttons
+		JButton Start = new JButton ("Start");
+		JButton Help = new JButton ("Help");
+		JButton Exit = new JButton ("Exit");
+
+		//adding buttons on top of the background.
+		background.add(Start);
+		background.add(Help);
+		background.add(Exit);
+		
+       
+		//add the background
+		Starting_menu.add(background);
+		Starting_menu.setSize(600, 600);		
+		Starting_menu.setVisible(true);
+		Starting_menu.setResizable(false);// user is not going to be able to resize it.
+		Starting_menu.setLocationRelativeTo(null);
+		Starting_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+		final JFrame frame = new JFrame("Reaction Test");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(600,600);
+		frame.setVisible(false);
+		frame.setResizable(false);// user is not going to be able to resize it.
+		frame.setLocationRelativeTo(null);
+
+	    
+	    
+		//Help screen
+		final JFrame Help_screen = new JFrame ("Help menu");
+		//background
+		ImagePanel background2 = new ImagePanel("C:/Users/Николай/workspace/A2 Project/HelpScreen.jpg");
+		background2.setPreferredSize(new Dimension(552, 552));
+		Help_screen.add(background2);
+		
+		JButton back = new JButton ("Back");
+		background2.add(back);
+
+		
+		Help_screen.setSize(600, 600);		
+		Help_screen.setVisible(false);
+		Help_screen.setResizable(false);// user is not going to be able to resize it.
+		Help_screen.setLocationRelativeTo(null);
+
+		Help_screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		
+		
+		//buttons 
+		Start.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {
+			// Action Listener
+			//button commands
+			Starting_menu.setVisible(false);
+			Starting_menu.dispose();
+			frame.setVisible(true);
+		    frame.add(new Game());
+				}});
+
+
+		Exit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+			System.exit(0);	
+			
+		}
+		});
+		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				Help_screen.setVisible(false);
+				Help_screen.dispose();
+				Starting_menu.setVisible(true);
+		}
+		});
+		
+		Help.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				Starting_menu.setVisible(false);
+				Starting_menu.dispose();
+				Help_screen.setVisible(true);
+		}
+		});
+	}
+
+}
