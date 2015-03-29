@@ -1,0 +1,90 @@
+package project;
+
+
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+
+
+
+
+public class User extends Objects{
+
+	int velocityx=0, velocityy=0;//he is motionless, when no arrow keys are going to be pressed.
+	int speed =2;//determines how fast the user is going to be moving
+	
+	public User(int x, int y) {
+		super(x, y);
+		// Hello.
+
+	}
+	public void update(){
+		
+		y+=velocityy;
+		x+=velocityx;
+		tocheckforcollision();
+}
+	public void draw(Graphics2D g2d){
+		g2d.drawImage(useriamge(), x, y, null);//this is going to draw the image of the user
+		
+	
+
+		
+
+}
+	public Image useriamge(){
+		ImageIcon icon = new ImageIcon("D:/User/Desktop/Other/ob1.png");//gets the image of the user
+		return icon.getImage();
+				
+
+}
+	public void keyPressed(KeyEvent e ){
+		int key = e.getKeyCode();
+		//movement of the user when the arrow keys are going to be pressed.
+		if(key == KeyEvent.VK_UP){
+			velocityy= -speed;
+		}else if (key== KeyEvent.VK_DOWN){
+			velocityy=  speed;
+		}else if (key== KeyEvent.VK_RIGHT){
+			velocityx=  speed;
+		}else if (key== KeyEvent.VK_LEFT){
+			velocityx=- speed; 
+		}}
+	
+	
+	//velocity x and y =0, means that user is not going to continue moving 
+	//in the direction pressed,after you release the button.
+	public void keyReleased(KeyEvent e ){
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_UP){
+			velocityy= 0;
+		}else if (key== KeyEvent.VK_DOWN){
+			velocityy=0;
+		}else if (key== KeyEvent.VK_RIGHT){
+			velocityx=0;
+		}else if (key== KeyEvent.VK_LEFT){
+			velocityx=0; }
+		}
+
+		
+	
+	//check collision
+		public void tocheckforcollision(){
+	ArrayList <Obstacles> obstacles = Game.getObstacles();
+	
+		for(int i=0; i<obstacles.size(); i++){
+			Obstacles obst = obstacles.get(i);
+			if(getBounds().intersects(obst.getBounds())){
+					Game.gameOver();
+					//if any of the obstacles are going to interact with the user, the game is going to finish.
+			}}}
+	//collision
+	 public Rectangle getBounds(){
+		 return new Rectangle(x,y, useriamge().getWidth(null),useriamge().getHeight(null));
+	 }}
